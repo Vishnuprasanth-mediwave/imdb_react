@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Ilogin } from "../components/types";
+import { loginUser } from "../services/api";
 
 const LoginForm = () => {
   const [login, setLogin] = useState<Ilogin>({
@@ -12,14 +13,14 @@ const LoginForm = () => {
   }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    async function handleAddMovie(user: IUserAdd) {
+    async function handleLogin(user: IUserAdd) {
       try {
         const userPayload = {
           email: user.email,
           user_password: user.user_password,
         };
         console.log(userPayload);
-        const response = await addUser(userPayload);
+        const response = await loginUser(userPayload);
         console.log(response);
       } catch (error) {
         if (error instanceof Error) {
