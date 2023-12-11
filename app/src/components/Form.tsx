@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { IUserAdd } from "./types";
 interface IForm {
-  handleAddMovie: (movie: IUserAdd) => void;
+  handleAddUser: (movie: IUserAdd) => void;
 }
-const Form: React.FC<IForm> = ({ handleAddMovie }) => {
+const Form: React.FC<IForm> = ({ handleAddUser }) => {
   const [user, setUser] = useState<IUserAdd>({
     first_name: "",
     last_name: "",
@@ -18,7 +18,7 @@ const Form: React.FC<IForm> = ({ handleAddMovie }) => {
   }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    handleAddMovie(user);
+    handleAddUser(user);
   }
   return (
     <>

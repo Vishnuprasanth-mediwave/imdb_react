@@ -4,7 +4,7 @@ import { IUserAdd } from "../components/types";
 import { addUser } from "../services/api";
 
 function SignupForm() {
-  async function handleAddMovie(user: IUserAdd) {
+  async function handleAddUser(user: IUserAdd) {
     try {
       const userPayload = {
         first_name: user.first_name,
@@ -27,7 +27,7 @@ function SignupForm() {
     <>
       <Layout title="signup">
         <h1>SignupForm</h1>
-        <Form handleAddMovie={handleAddMovie} />
+        <Form handleAddUser={handleAddUser} />
       </Layout>
     </>
   );
