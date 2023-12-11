@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 const SignupForm = lazy(() => import("./pages/SignupForm"));
 const UpdateForm = lazy(() => import("./pages/UpdateForm"));
 import Loading from "./components/loding";
+import LoginForm from "./pages/LoginForm";
 function App() {
   return (
     <Suspense fallback={<Loading />}>
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignupForm />} />
+          <Route path="/login" element={<LoginForm />} />
           <Route path="/update/:id" element={<UpdateForm />} />
         </Routes>
       </BrowserRouter>
