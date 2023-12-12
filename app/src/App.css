@@ -1,3 +1,58 @@
-label {
-  display: flex;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: black;
+  height: 100vh;
+}
+.titleBar {
+  height: 100px;
+  width: 100%;
+  background-color: rgb(18, 18, 18);
+}
+.logo {
+  background-color: rgb(245, 197, 24);
+  margin: 20px;
+  color: black;
+  font-weight: 900;
+}
+.navBar a {
+  color: rgb(224, 207, 202);
+  margin-right: 20px;
+}
+.nav-inp {
+  height: 20px;
+  margin: 20px;
+  background-color: rgb(255, 255, 255);
+}
+
+.gridBox {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.movie-card {
+  background-color: rgb(69, 69, 69);
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #1f1f1f;
+  box-shadow: 0 0 10px #fff;
+  transition: transform 0.2s;
+}
+
+.movie-card img {
+  width: 278px;
+  height: 392px;
+  box-shadow: 0 0 2px #808080;
+}
+.movie-card h3 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: white;
+}
+.movie-card p {
+  color: white;
 }

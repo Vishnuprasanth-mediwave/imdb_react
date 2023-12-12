@@ -10,3 +10,9 @@ export interface Ilogin {
   email: string;
   user_password: string;
 }
+export interface IMovie {
+  movie_name: string;
+  image: string;
+  movie_desc: string;
+  release_year: number | undefined;
+}

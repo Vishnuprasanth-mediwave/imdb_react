@@ -8,6 +8,7 @@ const SignupForm = lazy(() => import("./pages/SignupForm"));
 const UpdateForm = lazy(() => import("./pages/UpdateForm"));
 import Loading from "./components/loding";
 import LoginForm from "./pages/LoginForm";
+import MovieForm from "./pages/MovieForm";
 function App() {
   return (
     <Suspense fallback={<Loading />}>
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/movie" element={<MovieForm />} />
           <Route path="/update/:id" element={<UpdateForm />} />
         </Routes>
       </BrowserRouter>

@@ -1,14 +1,25 @@
 import axios from "axios";
-import { IUserAdd, Ilogin } from "../components/types";
+import { IMovie, IUserAdd, Ilogin } from "../components/types";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:5001/",
   //   timeout: 1000,
 });
 
-// export const getMovies = () => {
-//   return axiosInstance.get("/movies");
-// };
+const axiosInstancewithheader = axios.create({
+  baseURL: "http://localhost:5001",
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
+});
+
+export const getMovies = () => {
+  return axiosInstancewithheader.get("/movies");
+};
+
+export const AddMovie = (payload: IMovie) => {
+  return axiosInstancewithheader.post("/movie", payload);
+};
 
 export const addUser = (payload: IUserAdd) => {
   return axiosInstance.post("/signup", payload);
