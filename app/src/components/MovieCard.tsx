@@ -11,7 +11,7 @@ const MovieCard: React.FC<IMovieCard> = ({ movie }) => {
       <img src={movie.image} alt={movie.movie_name} />
       <h3>{movie.movie_name}</h3>
       <p>Year: {movie.release_year}</p>
-      {/* <p>Rating: {movie.rating}</p> */}
+      <p>Rating: {`${movie.rating}/5`}</p>
     </>
   );
 };

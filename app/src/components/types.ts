@@ -11,8 +11,10 @@ export interface Ilogin {
   user_password: string;
 }
 export interface IMovie {
+  movie_id?: string;
   movie_name: string;
   image: string;
   movie_desc: string;
   release_year: number | undefined;
+  rating?: number;
 }

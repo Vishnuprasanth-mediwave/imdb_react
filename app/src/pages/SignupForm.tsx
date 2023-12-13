@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Form from "../components/Form";
 import Layout from "../components/Layout";
 import { IUserAdd } from "../components/types";
@@ -5,6 +6,8 @@ import { addUser } from "../services/api";
 
 function SignupForm() {
   async function handleAddUser(user: IUserAdd) {
+    const [signup, setSignup] = useState(false);
+
     try {
       const userPayload = {
         first_name: user.first_name,
@@ -28,6 +31,30 @@ function SignupForm() {
       <Layout title="signup">
         <h1>SignupForm</h1>
         <Form handleAddUser={handleAddUser} />
+        {signup && (
+          <dialog open>
+            <article>
+              <h3>successfully signup!</h3>
+              <h4>to login click the button</h4>
+              <footer>
+                <a href="#confirm" role="button">
+                  Confirm
+                </a>
+              </footer>
+            </article>
+          </dialog>
+        )}
+        <dialog open>
+          <article>
+            <h3>successfully signup!</h3>
+            <h4>to login click the button</h4>
+            <footer>
+              <a href="#confirm" role="button">
+                Confirm
+              </a>
+            </footer>
+          </article>
+        </dialog>
       </Layout>
     </>
   );

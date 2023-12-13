@@ -10,6 +10,7 @@ const MovieForm = () => {
     movie_desc: "",
     release_year: 0,
   });
+  const [error, setError] = useState<string>("");
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     setMoviedata({ ...moviedata, [name]: value });
@@ -34,15 +35,15 @@ const MovieForm = () => {
       const response = await AddMovie(MoviePayload);
       console.log(response.data.gen_token);
       localStorage.setItem("token", response.data.gen_token);
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error("Error deleting movie:", error);
-      }
+      setError("");
+    } catch (error: any) {
+      console.log(error.response.data);
+      setError(error.response.data);
     }
   }
   return (
     <>
-      <Layout title="login">
+      <Layout title="movieForm">
         <h1>MovieForm</h1>
         <form onSubmit={handleSubmit}>
           <label htmlFor="movie_name">MovieName</label>
@@ -89,7 +90,7 @@ const MovieForm = () => {
             onChange={handleChange}
             required
           />
-
+          <h3 style={{ color: "red", textAlign: "center" }}>{error}</h3>
           <button type="submit">Submit</button>
         </form>
       </Layout>
