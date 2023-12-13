@@ -9,6 +9,7 @@ const UpdateForm = lazy(() => import("./pages/UpdateForm"));
 import Loading from "./components/loding";
 import LoginForm from "./pages/LoginForm";
 import MovieForm from "./pages/MovieForm";
+import User from "./pages/user";
 function App() {
   return (
     <Suspense fallback={<Loading />}>
@@ -18,6 +19,7 @@ function App() {
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/movie" element={<MovieForm />} />
+          <Route path="/u" element={<User />} />
           <Route path="/update/:id" element={<UpdateForm />} />
         </Routes>
       </BrowserRouter>

@@ -23,8 +23,8 @@ const Home = () => {
   return (
     <Layout title="MyIMDb">
       <div className="gridBox">
-        {movies.map((m, i) => (
-          <div className="movie-card" key={i}>
+        {movies.map((m) => (
+          <div className="movie-card" key={m.movie_id}>
             <MovieCard movie={m} />
           </div>
         ))}

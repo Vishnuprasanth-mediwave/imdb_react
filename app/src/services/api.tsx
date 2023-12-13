@@ -16,11 +16,15 @@ const axiosInstancewithheader = axios.create({
 export const getMovies = () => {
   return axiosInstancewithheader.get("/movies");
 };
-
+export const getUser = () => {
+  return axiosInstancewithheader.get("/u");
+};
 export const AddMovie = (payload: IMovie) => {
   return axiosInstancewithheader.post("/movie", payload);
 };
-
+export const getMovie = (movie_id: string) => {
+  return axiosInstancewithheader.get(`/movies/${movie_id}`);
+};
 export const addUser = (payload: IUserAdd) => {
   return axiosInstance.post("/signup", payload);
 };

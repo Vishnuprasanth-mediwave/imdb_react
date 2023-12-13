@@ -3,7 +3,7 @@ export interface IUserAdd {
   last_name: string;
   email: string;
   user_name: string;
-  user_password: string;
+  user_password?: string;
   phone_no: string;
 }
 export interface Ilogin {

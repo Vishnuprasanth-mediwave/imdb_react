@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import avatar from "../assets/free-avatar-370-456322.webp";
 
 const Nav = () => {
   return (
@@ -6,7 +7,14 @@ const Nav = () => {
       <Link to="/" className="logo">
         IMDB
       </Link>
+
       <input className="nav-inp" type="text" placeholder="search" />
+      <div className="img">
+        <Link to="/u">
+          <img src={avatar} alt="avatar" />
+        </Link>
+      </div>
+
       <ul className="navBar">
         <li>
           <Link to="/signup">SignUp</Link>
