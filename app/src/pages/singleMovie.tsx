@@ -30,22 +30,31 @@ const SingleMovie = () => {
   return (
     <>
       <div className="big-card">
-        <div className="flex"></div>
-        <img src={moviedata.image} alt={moviedata.movie_name} />
-        <h3>{moviedata.movie_name}</h3>
-        <p>Year: {moviedata.release_year}</p>
-        <p>Rating: {`${moviedata.overallRating}/5`}</p>
-        <p>Addedby: {moviedata.addedBy}</p>
-        <h4>Ratings</h4>
-        {moviedata?.ratings.map((r, i) => (
-          <div className="ratings" key={i}>
-            <p>
-              rating={r.rating}
-              <br />
-              ratedby:{r.ratedBy}
-            </p>
+        <div className="flex">
+          <div className="image">
+            <img src={moviedata.image} alt={moviedata.movie_name} />
           </div>
-        ))}
+          <div className="content">
+            <div className="left">
+              <h3>{moviedata.movie_name}</h3>
+              <p>Year: {moviedata.release_year}</p>
+              <p>Rating: {`${moviedata.overallRating}/5`}</p>
+              <p>Addedby: {moviedata.addedBy}</p>
+            </div>
+            <div className="right">
+              <h4>Ratings</h4>
+              {moviedata?.ratings.map((r, i) => (
+                <div className="ratings" key={i}>
+                  <p>
+                    rating={r.rating}
+                    <br />
+                    ratedby:{r.ratedBy}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

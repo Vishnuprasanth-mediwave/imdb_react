@@ -18,11 +18,12 @@ export interface IMovie {
   release_year: number | undefined;
   rating?: number;
 }
-export interface IMoviedata {
-  movie_id?: string;
-  movie_name: string;
-  image: string;
-  addedBy: string;
-  overallRating: number;
-  ratings?: { rating: number; ratedBy: string }[];
-}
+// export interface IMoviedata {
+//   movie_id: string;
+//   movie_name: string;
+//   image: string;
+//   movie_desc: string;
+//   addedBy: string;
+//   overallRating: number;
+//   ratings?: { rating: number; ratedBy: string }[];
+// }

@@ -84,6 +84,9 @@ h1 {
   position: relative;
 }
 .big-card {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
   position: absolute;
   z-index: 1;
   top: 20px;
@@ -107,13 +110,22 @@ h1 {
 .delete button:focus {
   box-shadow: none;
 }
+.big-card {
+}
 .big-card img {
   border: 5px solid white;
-  width: 40%;
+  width: 90%;
   height: 450px;
 }
 .big-card h3,
 .big-card h4,
 .big-card p {
   color: #fff;
+}
+.flex {
+  margin: 50px;
+}
+.content {
+  display: flex;
+  justify-content: space-around;
 }

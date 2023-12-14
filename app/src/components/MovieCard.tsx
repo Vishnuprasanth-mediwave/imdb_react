@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { IMovie, IMoviedata } from "./types";
-import { getMovie } from "../services/api";
+import { IMovie } from "./types";
 import { Link } from "react-router-dom";
 
 interface IMovieCard {
