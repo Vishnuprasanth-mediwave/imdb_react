@@ -10,6 +10,7 @@ body {
 h1 {
   color: #fff;
 }
+
 .titleBar {
   height: 100px;
   width: 100%;
@@ -78,4 +79,41 @@ h1 {
   display: flex;
   justify-content: center;
   margin-top: 50px;
+}
+.container {
+  position: relative;
+}
+.big-card {
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  width: 80%;
+  background-color: #585858;
+}
+.delete {
+  display: flex;
+  float: right;
+  width: 50px;
+  height: 50px;
+}
+.delete button {
+  border: none;
+  display: flex;
+  margin: 0;
+  background-color: #585858;
+  align-items: center;
+  justify-content: center;
+}
+.delete button:focus {
+  box-shadow: none;
+}
+.big-card img {
+  border: 5px solid white;
+  width: 40%;
+  height: 450px;
+}
+.big-card h3,
+.big-card h4,
+.big-card p {
+  color: #fff;
 }

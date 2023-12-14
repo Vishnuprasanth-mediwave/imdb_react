@@ -10,6 +10,7 @@ import Loading from "./components/loding";
 import LoginForm from "./pages/LoginForm";
 import MovieForm from "./pages/MovieForm";
 import User from "./pages/user";
+import SingleMovie from "./pages/singleMovie";
 function App() {
   return (
     <Suspense fallback={<Loading />}>
@@ -19,6 +20,7 @@ function App() {
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/movie" element={<MovieForm />} />
+          <Route path="/movies/:id" element={<SingleMovie />} />
           <Route path="/u" element={<User />} />
           <Route path="/update/:id" element={<UpdateForm />} />
         </Routes>
