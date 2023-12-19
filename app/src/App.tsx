@@ -11,18 +11,21 @@ import LoginForm from "./pages/LoginForm";
 import MovieForm from "./pages/MovieForm";
 import User from "./pages/user";
 import SingleMovie from "./pages/singleMovie";
+import PrivateRoutes from "./components/PrivateRoutes";
 function App() {
   return (
     <Suspense fallback={<Loading />}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/movie" element={<MovieForm />} />
-          <Route path="/movies/:id" element={<SingleMovie />} />
-          <Route path="/u" element={<User />} />
-          <Route path="/update/:id" element={<UpdateForm />} />
+          <Route path="/" element={<Home />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path="/movie" element={<MovieForm />} />
+            <Route path="/movies/:id" element={<SingleMovie />} />
+            <Route path="/u" element={<User />} />
+            <Route path="/update/:id" element={<UpdateForm />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </Suspense>

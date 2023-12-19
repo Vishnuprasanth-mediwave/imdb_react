@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getMovie } from "../services/api";
+import { Link, useParams } from "react-router-dom";
+import { addRating, getMovie } from "../services/api";
+import MyComponent from "../components/rating";
 
 const SingleMovie = () => {
   const [moviedata, setMoviedata] = useState({
@@ -27,10 +28,53 @@ const SingleMovie = () => {
       }
     }
   }
+  function sendRating(rate: number) {
+    addRatingFromAPI(id, rate);
+  }
+  async function addRatingFromAPI(id: string | undefined, rate: number) {
+    try {
+      const Payload = {
+        rating: rate,
+      };
+      const response = await addRating(id || "", Payload);
+      console.log(response.data);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error);
+      }
+    }
+  }
+  const renderStars = (rating: number) => {
+    const roundedRating = Math.round(rating);
+
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      const starClassName = i <= roundedRating ? "filled" : "empty";
+      stars.push(
+        <span key={i} className={`star ${starClassName}`}>
+          &#9733;
+        </span>
+      );
+    }
+
+    return stars;
+  };
+
   return (
     <>
-      <div className="big-card">
-        <div className="flex">
+      <nav className="titleBar">
+        <Link to="/" className="logo">
+          IMDB
+        </Link>
+
+        <ul className="navBar">
+          <li className="back" role="button">
+            <Link to="/">back</Link>
+          </li>
+        </ul>
+      </nav>
+      <div className="single-card">
+        <div className="big-card">
           <div className="image">
             <img src={moviedata.image} alt={moviedata.movie_name} />
           </div>
@@ -38,7 +82,8 @@ const SingleMovie = () => {
             <div className="left">
               <h3>{moviedata.movie_name}</h3>
               <p>Year: {moviedata.release_year}</p>
-              <p>Rating: {`${moviedata.overallRating}/5`}</p>
+              <p>Rating: {renderStars(moviedata.overallRating)}</p>
+              <p>description: {moviedata.movie_desc}</p>
               <p>Addedby: {moviedata.addedBy}</p>
             </div>
             <div className="right">
@@ -46,7 +91,7 @@ const SingleMovie = () => {
               {moviedata?.ratings.map((r, i) => (
                 <div className="ratings" key={i}>
                   <p>
-                    rating={r.rating}
+                    rating={renderStars(r.rating)}
                     <br />
                     ratedby:{r.ratedBy}
                   </p>
@@ -54,6 +99,9 @@ const SingleMovie = () => {
               ))}
             </div>
           </div>
+        </div>
+        <div className="rating">
+          <MyComponent sendRating={sendRating} />
         </div>
       </div>
     </>

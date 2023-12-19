@@ -18,6 +18,9 @@ export interface IMovie {
   release_year: number | undefined;
   rating?: number;
 }
+export interface IRating {
+  rating: number;
+}
 // export interface IMoviedata {
 //   movie_id: string;
 //   movie_name: string;

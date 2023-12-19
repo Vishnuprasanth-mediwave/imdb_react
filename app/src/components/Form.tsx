@@ -12,13 +12,26 @@ const Form: React.FC<IForm> = ({ handleAddUser }) => {
     user_password: "",
     phone_no: "",
   });
+  const [conPass, setConpass] = useState("");
+  const [passError, setPassError] = useState({
+    error: "",
+    show: false,
+  });
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   }
+  function handleconfirmPassword(e: React.ChangeEvent<HTMLInputElement>) {
+    const { value } = e.target;
+    setConpass(value);
+  }
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    handleAddUser(user);
+    if (conPass === user.user_password) {
+      handleAddUser(user);
+    } else {
+      setPassError({ ...passError, error: "password not match", show: true });
+    }
   }
   return (
     <>
@@ -74,6 +87,18 @@ const Form: React.FC<IForm> = ({ handleAddUser }) => {
             onChange={handleChange}
             required
           />
+        </label>
+        <label htmlFor="confirm-password">
+          confirm-Password
+          <input
+            type="text"
+            id="confirm-password"
+            name="confirm-password"
+            placeholder="confirm Password"
+            onChange={handleconfirmPassword}
+            required
+          />
+          {passError.show && <p style={{ color: "red" }}>{passError.error}</p>}
         </label>
         <label htmlFor="phone">Phone</label>
         <input

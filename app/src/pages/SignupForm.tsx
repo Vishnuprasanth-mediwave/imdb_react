@@ -4,9 +4,11 @@ import Layout from "../components/Layout";
 import { IUserAdd } from "../components/types";
 import { addUser } from "../services/api";
 import { useNavigate } from "react-router-dom";
+import Modal from "../components/modal";
 function SignupForm() {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [msg, setMsg] = useState("");
   async function handleAddUser(user: IUserAdd) {
     try {
       const userPayload = {
@@ -21,6 +23,7 @@ function SignupForm() {
       const response = await addUser(userPayload);
       console.log(response);
       setShowModal(true);
+      setMsg("signup");
     } catch (error) {
       if (error instanceof Error) {
         console.error("Error deleting movie:", error);
@@ -32,22 +35,7 @@ function SignupForm() {
       <Layout title="signup">
         <h1>SignupForm</h1>
         <Form handleAddUser={handleAddUser} />
-        {showModal && (
-          <dialog open>
-            <article>
-              <header>
-                <a href="#close" aria-label="Close" className="close"></a>
-                Signup
-              </header>
-              <p>successfully signup</p>
-              <footer>
-                <button onClick={() => navigate("/login")} role="button">
-                  Confirm
-                </button>
-              </footer>
-            </article>
-          </dialog>
-        )}
+        {showModal && <Modal msg={msg} />}
       </Layout>
     </>
   );

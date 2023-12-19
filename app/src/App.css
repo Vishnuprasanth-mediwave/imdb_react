@@ -5,7 +5,6 @@
 }
 body {
   background-color: black;
-  height: 100vh;
 }
 h1 {
   color: #fff;
@@ -80,18 +79,14 @@ h1 {
   justify-content: center;
   margin-top: 50px;
 }
-.container {
-  position: relative;
-}
+
 .big-card {
-  display: flex;
   justify-content: center;
   margin: 50px;
-  position: absolute;
-  z-index: 1;
-  top: 20px;
   width: 80%;
   background-color: #585858;
+  border: 1px solid #1f1f1f;
+  box-shadow: 0 0 10px #fff;
 }
 .delete {
   display: flex;
@@ -110,11 +105,15 @@ h1 {
 .delete button:focus {
   box-shadow: none;
 }
-.big-card {
+.image {
+  text-align: center;
+  margin: 40px 0;
 }
+
 .big-card img {
+  margin: 0 auto;
   border: 5px solid white;
-  width: 90%;
+  max-width: 600px;
   height: 450px;
 }
 .big-card h3,
@@ -122,10 +121,34 @@ h1 {
 .big-card p {
   color: #fff;
 }
-.flex {
-  margin: 50px;
+.single-card {
+  text-align: -webkit-center;
 }
 .content {
   display: flex;
   justify-content: space-around;
+}
+ul .back {
+  margin-right: 20px;
+}
+.rating {
+  display: flex;
+  width: 338px;
+  justify-content: space-between;
+  align-items: center;
+}
+.rating button {
+  margin-top: 20px;
+  width: 100px;
+}
+.star-rating {
+  font-size: 24px;
+}
+
+.star {
+  color: #ccc;
+}
+
+.star.filled {
+  color: #ffd700; /* or any other color for filled stars */
 }
