@@ -8,14 +8,12 @@ const Nav = () => {
         IMDB
       </Link>
 
-      <input className="nav-inp" type="text" placeholder="search" />
-      <div className="img">
-        <Link to="/u">
-          <img src={avatar} alt="avatar" />
-        </Link>
-      </div>
-
       <ul className="navBar">
+        <div className="img">
+          <Link to="/u">
+            <img src={avatar} alt="avatar" />
+          </Link>
+        </div>
         <li>
           <Link to="/signup">SignUp</Link>
         </li>

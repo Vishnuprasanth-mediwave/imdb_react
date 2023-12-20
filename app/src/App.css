@@ -36,6 +36,9 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
 }
+.error {
+  color: red;
+}
 .movie-card {
   background-color: rgb(69, 69, 69);
   width: 300px;
@@ -63,8 +66,8 @@ h1 {
   margin-right: 20px;
 }
 .img img {
-  width: 170px;
-  height: 85px;
+  width: 70px;
+  height: 70px;
   margin-top: 10px;
 }
 .details {
@@ -151,4 +154,13 @@ ul .back {
 
 .star.filled {
   color: #ffd700; /* or any other color for filled stars */
+}
+.pagenation-btn {
+  display: flex;
+}
+.pagenation-btn button {
+  margin: 30px 10px;
+}
+.searchbar {
+  width: 500px;
 }

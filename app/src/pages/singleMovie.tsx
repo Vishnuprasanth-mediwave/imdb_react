@@ -14,6 +14,7 @@ const SingleMovie = () => {
     overallRating: 0,
     ratings: [{ rating: 0, ratedBy: "" }],
   });
+  let [message, setMessage] = useState("");
   const { id } = useParams();
   useEffect(() => {
     getMovieFromAPI(id);
@@ -37,11 +38,10 @@ const SingleMovie = () => {
         rating: rate,
       };
       const response = await addRating(id || "", Payload);
-      console.log(response.data);
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log(error);
-      }
+      console.log(response);
+    } catch (error: any) {
+      console.log(error.response.data.message[0]);
+      setMessage(error.response.data.message[0]);
     }
   }
   const renderStars = (rating: number) => {
@@ -99,9 +99,10 @@ const SingleMovie = () => {
               ))}
             </div>
           </div>
-        </div>
-        <div className="rating">
-          <MyComponent sendRating={sendRating} />
+          <div className="rating">
+            <MyComponent sendRating={sendRating} />
+            {message && <p style={{ color: "red " }}>{message}</p>}
+          </div>
         </div>
       </div>
     </>

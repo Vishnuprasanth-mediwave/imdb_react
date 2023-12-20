@@ -24,8 +24,8 @@ const setHeaders = () => {
 //   },
 // });
 
-export const getMovies = () => {
-  return axiosInstance.get("/movies");
+export const getMovies = (page: number, search: string) => {
+  return axiosInstance.get(`/movies?page=${page}&search=${search}`);
 };
 export const getUser = () => {
   return axiosInstance.get("/u", setHeaders());
