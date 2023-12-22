@@ -11,7 +11,7 @@ import LoginForm from "./pages/LoginForm";
 import MovieForm from "./pages/MovieForm";
 import User from "./pages/user";
 import SingleMovie from "./pages/singleMovie";
-import PrivateRoutes from "./components/PrivateRoutes";
+import PrivateRoutes from "./components/PrivateRoutes.tsx";
 function App() {
   return (
     <Suspense fallback={<Loading />}>
@@ -24,7 +24,7 @@ function App() {
             <Route path="/movie" element={<MovieForm />} />
             <Route path="/movies/:id" element={<SingleMovie />} />
             <Route path="/u" element={<User />} />
-            <Route path="/update/:id" element={<UpdateForm />} />
+            <Route path="/update" element={<UpdateForm />} />
           </Route>
         </Routes>
       </BrowserRouter>

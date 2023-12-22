@@ -10,15 +10,14 @@ const Home = () => {
   const [search, setSearch] = useState("");
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(0);
+  const [selectedOption, setSelectedOption] = useState("");
+
   useEffect(() => {
     getMoviesFromAPI();
-  }, [page]);
-  useEffect(() => {
-    getMoviesFromAPI();
-  }, [search]);
+  }, [search, selectedOption, page]);
   async function getMoviesFromAPI() {
     try {
-      const response = await getMovies(page, search);
+      const response = await getMovies(page, search, selectedOption);
       setMovies(response.data.movies);
       setCount(response.data.totalMovies - 4);
     } catch (error) {
@@ -31,9 +30,7 @@ const Home = () => {
     setPage(currentpage);
     console.log(currentpage);
   }
-  function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearch(e.target.value);
-  }
+
   return (
     <Layout title="MyIMDb">
       <div className="searchbar">
@@ -41,8 +38,21 @@ const Home = () => {
           className="nav-inp"
           type="text"
           placeholder="search"
-          onChange={handleSearch}
+          onChange={(e) => setSearch(e.target.value)}
         />
+        <select
+          className="filter"
+          name="filter"
+          id="filter"
+          value={selectedOption}
+          onChange={(e) => setSelectedOption(e.target.value)}
+        >
+          <option selected disabled>
+            filter
+          </option>
+          <option value="ASC">A-Z</option>
+          <option value="DESC">Z-A</option>
+        </select>
       </div>
       <div className="gridBox">
         {movies.map((m) => (

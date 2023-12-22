@@ -24,8 +24,14 @@ const setHeaders = () => {
 //   },
 // });
 
-export const getMovies = (page: number, search: string) => {
-  return axiosInstance.get(`/movies?page=${page}&search=${search}`);
+export const getMovies = (
+  page: number,
+  search: string,
+  selectedOption: string
+) => {
+  return axiosInstance.get(
+    `/movies?page=${page}&search=${search}&movie_name=${selectedOption}`
+  );
 };
 export const getUser = () => {
   return axiosInstance.get("/u", setHeaders());
@@ -38,6 +44,9 @@ export const addRating = (id: string, payload: IRating) => {
 };
 export const getMovie = (movie_id: string) => {
   return axiosInstance.get(`/movies/${movie_id}`, setHeaders());
+};
+export const updateUser = (payload: IUserAdd) => {
+  return axiosInstance.patch("/update", payload, setHeaders());
 };
 export const addUser = (payload: IUserAdd) => {
   return axiosInstance.post("/signup", payload);

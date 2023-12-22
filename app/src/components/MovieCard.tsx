@@ -24,7 +24,9 @@ const MovieCard: React.FC<IMovieCard> = ({ movie }) => {
   return (
     <>
       <div className="movie-card">
-        <img src={movie.image} alt={movie.movie_name} />
+        <div className="image-block">
+          <img src={movie.image} alt={movie.movie_name} />
+        </div>
         <h3>{movie.movie_name}</h3>
         <p>Year: {movie.release_year}</p>
         <p>Rating: {renderStars(movie.rating || 0)}</p>

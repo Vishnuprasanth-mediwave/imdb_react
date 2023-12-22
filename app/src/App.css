@@ -3,8 +3,11 @@
   margin: 0;
   box-sizing: border-box;
 }
-body {
+:root {
   background-color: black;
+}
+body {
+  min-height: 100vh;
 }
 h1 {
   color: #fff;
@@ -49,9 +52,11 @@ h1 {
 }
 
 .movie-card img {
-  width: 278px;
-  height: 392px;
+  width: 100%;
+  height: 100%;
   box-shadow: 0 0 2px #808080;
+  object-fit: cover;
+  object-position: 100% 20%;
 }
 .movie-card h3 {
   overflow: hidden;
@@ -162,5 +167,23 @@ ul .back {
   margin: 30px 10px;
 }
 .searchbar {
-  width: 500px;
+  width: 90%;
+  display: flex;
+  align-items: baseline;
+}
+.searchbar input {
+  width: 80%;
+}
+.image-block {
+  width: 275px;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 4px solid #fff;
+  border-radius: 12px;
+}
+.filter {
+  height: 60px;
+  width: 100px;
+  background-color: #ffd700;
 }

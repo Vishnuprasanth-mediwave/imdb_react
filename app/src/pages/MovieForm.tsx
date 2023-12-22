@@ -10,6 +10,7 @@ const MovieForm = () => {
     movie_desc: "",
     release_year: 0,
   });
+
   const [error, setError] = useState<string>("");
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
