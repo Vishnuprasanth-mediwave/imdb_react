@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getUser } from "../services/api";
 import { IUserAdd } from "../components/types";
 import Layout from "../components/Layout";
+import { Link } from "react-router-dom";
 
 const User = () => {
   const [user, setUser] = useState<IUserAdd>();
@@ -29,6 +30,9 @@ const User = () => {
             <h2>user_name: {user?.user_name}</h2>
             <h2>email: {user?.email}</h2>
             <h2>phone_no: {user?.phone_no}</h2>
+            <Link to="/update">
+              <button className="update-btn">Update</button>
+            </Link>
           </div>
         </div>
       </Layout>

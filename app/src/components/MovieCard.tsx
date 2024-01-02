@@ -33,6 +33,9 @@ const MovieCard: React.FC<IMovieCard> = ({ movie }) => {
         <Link to={`/movies/${movie.movie_id}`}>
           <button>view</button>
         </Link>
+        <Link to={`/updatemovie/${movie.movie_id}`}>
+          <button>Edit</button>
+        </Link>
       </div>
     </>
   );

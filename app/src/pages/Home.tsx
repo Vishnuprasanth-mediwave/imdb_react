@@ -19,7 +19,7 @@ const Home = () => {
     try {
       const response = await getMovies(page, search, selectedOption);
       setMovies(response.data.movies);
-      setCount(response.data.totalMovies - 4);
+      setCount(response.data.totalMovies);
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);
@@ -42,14 +42,10 @@ const Home = () => {
         />
         <select
           className="filter"
-          name="filter"
-          id="filter"
           value={selectedOption}
           onChange={(e) => setSelectedOption(e.target.value)}
         >
-          <option selected disabled>
-            filter
-          </option>
+          <option value="filter">filter</option>
           <option value="ASC">A-Z</option>
           <option value="DESC">Z-A</option>
         </select>

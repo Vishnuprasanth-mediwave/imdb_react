@@ -13,6 +13,8 @@ const LoginForm = () => {
     email: "",
     user_password: "",
   });
+  const [error, setError] = useState<string>("");
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     setLogin({ ...login, [name]: value });
@@ -33,10 +35,9 @@ const LoginForm = () => {
       localStorage.setItem("token", response.data.gen_token);
       setShowModal(true);
       setMsg("login");
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error("Error deleting movie:", error);
-      }
+      setError("");
+    } catch (error: any) {
+      setError(error.response.data);
     }
   }
   return (
@@ -63,7 +64,7 @@ const LoginForm = () => {
           />
         </label>
         <button type="submit">Submit</button>
-
+        {error && <p className="error">{error}</p>}
         {showModal && <Modal msg={msg} />}
       </form>
     </Layout>

@@ -9,7 +9,7 @@
 body {
   min-height: 100vh;
 }
-h1 {
+.container h1 {
   color: #fff;
 }
 
@@ -40,6 +40,7 @@ h1 {
   gap: 20px;
 }
 .error {
+  text-align: center;
   color: red;
 }
 .movie-card {
@@ -186,4 +187,8 @@ ul .back {
   height: 60px;
   width: 100px;
   background-color: #ffd700;
+}
+.update-btn {
+  margin: 0 auto;
+  width: 120px;
 }

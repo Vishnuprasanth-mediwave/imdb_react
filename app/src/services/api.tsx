@@ -1,5 +1,6 @@
 import axios from "axios";
 import { IMovie, IRating, IUserAdd, Ilogin } from "../components/types";
+import { jwtDecode } from "jwt-decode";
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:5001/",
@@ -9,13 +10,23 @@ const setHeaders = () => {
   const token = localStorage.getItem("token");
   let headers = {};
   if (token) {
-    headers = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
+    let decodedToken = jwtDecode(token);
+    console.log("Decoded Token", decodedToken);
+    let currentDate = new Date();
+
+    // JWT exp is in seconds
+    if (decodedToken.exp && decodedToken.exp < currentDate.getTime() / 1000) {
+      console.log("Token expired.");
+      localStorage.clear();
+    } else {
+      headers = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      return headers;
+    }
   }
-  return headers;
 };
 // const axiosInstancewithheader = axios.create({
 //   baseURL: "http://localhost:5001",
@@ -44,6 +55,9 @@ export const addRating = (id: string, payload: IRating) => {
 };
 export const getMovie = (movie_id: string) => {
   return axiosInstance.get(`/movies/${movie_id}`, setHeaders());
+};
+export const updateMovieApi = (movie_id: string, payload: IMovie) => {
+  return axiosInstance.patch(`/movies/${movie_id}`, payload, setHeaders());
 };
 export const updateUser = (payload: IUserAdd) => {
   return axiosInstance.patch("/update", payload, setHeaders());
