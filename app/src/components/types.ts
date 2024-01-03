@@ -21,6 +21,10 @@ export interface IMovie {
 export interface IRating {
   rating: number;
 }
+export interface IResetPass {
+  old_password: string;
+  new_password: string;
+}
 // export interface IMoviedata {
 //   movie_id: string;
 //   movie_name: string;

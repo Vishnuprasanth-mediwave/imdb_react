@@ -1,5 +1,11 @@
 import axios from "axios";
-import { IMovie, IRating, IUserAdd, Ilogin } from "../components/types";
+import {
+  IMovie,
+  IRating,
+  IResetPass,
+  IUserAdd,
+  Ilogin,
+} from "../components/types";
 import { jwtDecode } from "jwt-decode";
 
 const axiosInstance = axios.create({
@@ -11,13 +17,13 @@ const setHeaders = () => {
   let headers = {};
   if (token) {
     let decodedToken = jwtDecode(token);
-    console.log("Decoded Token", decodedToken);
     let currentDate = new Date();
 
     // JWT exp is in seconds
     if (decodedToken.exp && decodedToken.exp < currentDate.getTime() / 1000) {
       console.log("Token expired.");
       localStorage.clear();
+      location.reload();
     } else {
       headers = {
         headers: {
@@ -61,6 +67,9 @@ export const updateMovieApi = (movie_id: string, payload: IMovie) => {
 };
 export const updateUser = (payload: IUserAdd) => {
   return axiosInstance.patch("/update", payload, setHeaders());
+};
+export const updateUserPassword = (payload: IResetPass) => {
+  return axiosInstance.put("/u/update/password", payload, setHeaders());
 };
 export const addUser = (payload: IUserAdd) => {
   return axiosInstance.post("/signup", payload);

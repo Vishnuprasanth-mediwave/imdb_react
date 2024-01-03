@@ -94,7 +94,7 @@ const Form: React.FC<IForm> = ({ handleAddUser, type, details }) => {
           placeholder="Phone"
           onChange={handleChange}
         />
-        {type == "Add" && (
+        {type == "Add" ? (
           <>
             <label htmlFor="password">
               Password
@@ -125,8 +125,9 @@ const Form: React.FC<IForm> = ({ handleAddUser, type, details }) => {
             </label>
             <button onClick={handleSubmit}>Submit</button>
           </>
+        ) : (
+          <button onClick={handleupdate}>Submit</button>
         )}
-        <button onClick={handleupdate}>Submit</button>
       </form>
     </>
   );

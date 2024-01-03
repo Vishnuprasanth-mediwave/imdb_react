@@ -14,7 +14,7 @@ const User = () => {
         setUser(response.data);
       } catch (error: any) {
         console.log(error);
-        setError(error.response.data);
+        setError(error.response.data.message);
       }
     }
     getUserFromAPI();
@@ -30,9 +30,14 @@ const User = () => {
             <h2>user_name: {user?.user_name}</h2>
             <h2>email: {user?.email}</h2>
             <h2>phone_no: {user?.phone_no}</h2>
-            <Link to="/update">
-              <button className="update-btn">Update</button>
-            </Link>
+            <div className="buttons">
+              <Link to="/update">
+                <button className="update-btn">Update</button>
+              </Link>
+              <Link to="/reset/password">
+                <button className="reset-btn">change password</button>
+              </Link>
+            </div>
           </div>
         </div>
       </Layout>

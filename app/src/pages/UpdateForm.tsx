@@ -3,6 +3,7 @@ import Form from "../components/Form";
 import Layout from "../components/Layout";
 import { IUserAdd } from "../components/types";
 import { getUser, updateUser } from "../services/api";
+import Modal from "../components/modal";
 
 function UpdateForm() {
   const [details, setDetails] = useState<IUserAdd>({
@@ -12,6 +13,8 @@ function UpdateForm() {
     user_name: "",
     phone_no: "",
   });
+  const [showModal, setShowModal] = useState(false);
+  const [msg, setMsg] = useState("");
   const [error, setError] = useState<string>("");
   useEffect(() => {
     async function getUserFromAPI() {
@@ -32,9 +35,11 @@ function UpdateForm() {
     try {
       const response = await updateUser(user);
       console.log(response);
+      setShowModal(true);
+      setMsg("successfully updated");
     } catch (error: any) {
       console.log(error);
-      setError(error.response.data);
+      setError(error.response.data.message);
     }
   }
 
@@ -49,6 +54,7 @@ function UpdateForm() {
           type="update"
           handleAddUser={handleUpdateUser}
         />
+        {showModal && <Modal msg={msg} />}
         {error && <p>{error}</p>}
       </Layout>
     </>

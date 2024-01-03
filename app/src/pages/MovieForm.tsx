@@ -39,7 +39,7 @@ const MovieForm = () => {
       setError("");
     } catch (error: any) {
       console.log(error.response.data);
-      setError(error.response.data);
+      setError(error.response.data.message);
     }
   }
   return (

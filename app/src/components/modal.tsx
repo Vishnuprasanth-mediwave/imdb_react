@@ -11,7 +11,7 @@ const Modal: React.FC<IModal> = ({ msg }) => {
           <a href="#close" aria-label="Close" className="close"></a>
           {msg}
         </header>
-        <p>successfully {msg}</p>
+        <p>{msg}</p>
         <footer>
           <Link to="/">
             <button role="button">Confirm</button>

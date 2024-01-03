@@ -192,3 +192,7 @@ ul .back {
   margin: 0 auto;
   width: 120px;
 }
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
