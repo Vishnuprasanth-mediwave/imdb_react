@@ -22,8 +22,14 @@ export interface IRating {
   rating: number;
 }
 export interface IResetPass {
-  old_password: string;
+  old_password?: string;
   new_password: string;
+}
+export interface Iemail {
+  email: string;
+}
+export interface Iotp {
+  otp: number;
 }
 // export interface IMoviedata {
 //   movie_id: string;

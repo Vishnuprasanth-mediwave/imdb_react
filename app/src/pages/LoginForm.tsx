@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Ilogin } from "../components/types";
 import { loginUser } from "../services/api";
 import Layout from "../components/Layout";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "../components/modal";
 
 const LoginForm = () => {
@@ -67,6 +67,7 @@ const LoginForm = () => {
         {error && <p className="error">{error}</p>}
         {showModal && <Modal msg={msg} />}
       </form>
+      <Link to="/forget">forget password?</Link>
     </Layout>
   );
 };

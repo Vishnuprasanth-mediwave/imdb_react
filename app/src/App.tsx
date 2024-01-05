@@ -14,6 +14,9 @@ import SingleMovie from "./pages/singleMovie";
 import PrivateRoutes from "./components/PrivateRoutes.tsx";
 import UpdateMovieForm from "./pages/updateMovieForm.tsx";
 import ChangePassword from "./pages/ChangePassword.tsx";
+import ForgetPassword from "./pages/ForgetPassword.tsx";
+import OtpPage from "./pages/OtpPage.tsx";
+import UpdateNewPassword from "./pages/updateNewPassword.tsx";
 function App() {
   return (
     <Suspense fallback={<Loading />}>
@@ -21,6 +24,9 @@ function App() {
         <Routes>
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/forget" element={<ForgetPassword />} />
+          <Route path="/otp/:id" element={<OtpPage />} />
+          <Route path="/setpassword/:id" element={<UpdateNewPassword />} />
           <Route path="/" element={<Home />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/movies/:id" element={<SingleMovie />} />

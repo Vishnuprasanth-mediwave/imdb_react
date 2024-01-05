@@ -4,7 +4,9 @@ import {
   IRating,
   IResetPass,
   IUserAdd,
+  Iemail,
   Ilogin,
+  Iotp,
 } from "../components/types";
 import { jwtDecode } from "jwt-decode";
 
@@ -70,6 +72,18 @@ export const updateUser = (payload: IUserAdd) => {
 };
 export const updateUserPassword = (payload: IResetPass) => {
   return axiosInstance.put("/u/update/password", payload, setHeaders());
+};
+export const forgetPasswordApi = (payload: Iemail) => {
+  return axiosInstance.post("/forget/password", payload);
+};
+export const setNewPassword = (payload: IResetPass, id: string) => {
+  return axiosInstance.patch(`/update/new/password/${id}`, payload);
+};
+export const otpVerificationApi = (payload: Iotp, id: string) => {
+  return axiosInstance.post(`/otp/verify/${id}`, payload);
+};
+export const deleteMovieApi = (movieId: string) => {
+  return axiosInstance.delete(`/movies/${movieId}`, setHeaders());
 };
 export const addUser = (payload: IUserAdd) => {
   return axiosInstance.post("/signup", payload);

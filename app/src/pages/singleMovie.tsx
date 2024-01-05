@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { addRating, getMovie } from "../services/api";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { addRating, deleteMovieApi, getMovie } from "../services/api";
 import MyComponent from "../components/rating";
 
 const SingleMovie = () => {
@@ -16,6 +16,7 @@ const SingleMovie = () => {
   });
   let [message, setMessage] = useState("");
   const { id } = useParams();
+  const navigate = useNavigate();
   useEffect(() => {
     getMovieFromAPI(id);
   }, [id]);
@@ -59,7 +60,23 @@ const SingleMovie = () => {
 
     return stars;
   };
-
+  const handleDelete = () => {
+    console.log("delete");
+    deleteMovie(id);
+  };
+  const deleteMovie = async (id: string | undefined) => {
+    try {
+      if (id) {
+        await deleteMovieApi(id);
+        navigate("/");
+      }
+    } catch (error: any) {
+      if (error) {
+        console.log(error);
+      }
+      setMessage(error.response.data.message || error.message.data.message[0]);
+    }
+  };
   return (
     <>
       <nav className="titleBar">
@@ -75,6 +92,9 @@ const SingleMovie = () => {
       </nav>
       <div className="single-card">
         <div className="big-card">
+          <button onClick={handleDelete} className="delete">
+            ❌
+          </button>
           <div className="image">
             <img src={moviedata.image} alt={moviedata.movie_name} />
           </div>

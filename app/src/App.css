@@ -3,6 +3,7 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 :root {
   background-color: black;
 }
@@ -195,4 +196,7 @@ ul .back {
 .buttons {
   display: flex;
   justify-content: space-around;
+}
+.otp-container input {
+  color: #fff;
 }
