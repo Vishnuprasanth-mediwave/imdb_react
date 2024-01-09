@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Layout from "../components/Layout";
-import { IResetPass } from "../components/types";
-import { setNewPassword, updateUserPassword } from "../services/api";
+import { setNewPassword } from "../services/api";
 import Modal from "../components/modal";
 import { useParams } from "react-router-dom";
 

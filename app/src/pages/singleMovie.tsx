@@ -67,7 +67,8 @@ const SingleMovie = () => {
   const deleteMovie = async (id: string | undefined) => {
     try {
       if (id) {
-        await deleteMovieApi(id);
+        const response = await deleteMovieApi(id);
+        console.log(response);
         navigate("/");
       }
     } catch (error: any) {

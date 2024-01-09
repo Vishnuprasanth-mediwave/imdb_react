@@ -55,7 +55,7 @@ export const getMovies = (
 export const getUser = () => {
   return axiosInstance.get("/u", setHeaders());
 };
-export const AddMovie = (payload: IMovie) => {
+export const AddMovie = (payload: FormData) => {
   return axiosInstance.post("/movie", payload, setHeaders());
 };
 export const addRating = (id: string, payload: IRating) => {
@@ -83,7 +83,7 @@ export const otpVerificationApi = (payload: Iotp, id: string) => {
   return axiosInstance.post(`/otp/verify/${id}`, payload);
 };
 export const deleteMovieApi = (movieId: string) => {
-  return axiosInstance.delete(`/movies/${movieId}`, setHeaders());
+  return axiosInstance.delete(`/movie/${movieId}`, setHeaders());
 };
 export const addUser = (payload: IUserAdd) => {
   return axiosInstance.post("/signup", payload);

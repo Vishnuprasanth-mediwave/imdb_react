@@ -1,8 +1,8 @@
-import { IMovie } from "./types";
+import { IMovieAllcards } from "./types";
 import { Link } from "react-router-dom";
 
 interface IMovieCard {
-  movie: IMovie;
+  movie: IMovieAllcards;
 }
 
 const MovieCard: React.FC<IMovieCard> = ({ movie }) => {
@@ -25,7 +25,10 @@ const MovieCard: React.FC<IMovieCard> = ({ movie }) => {
     <>
       <div className="movie-card">
         <div className="image-block">
-          <img src={movie.image} alt={movie.movie_name} />
+          <img
+            src={`http://localhost:5001/uploads/${movie.image}`}
+            alt={movie.movie_name}
+          />
         </div>
         <h3>{movie.movie_name}</h3>
         <p>Year: {movie.release_year}</p>

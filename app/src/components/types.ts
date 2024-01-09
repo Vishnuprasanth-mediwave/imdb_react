@@ -13,9 +13,17 @@ export interface Ilogin {
 export interface IMovie {
   movie_id?: string;
   movie_name: string;
+  file: File | string;
+  movie_desc: string;
+  release_year: number;
+  rating?: number;
+}
+export interface IMovieAllcards {
+  movie_id?: string;
+  movie_name: string;
   image: string;
   movie_desc: string;
-  release_year: number | undefined;
+  release_year: number;
   rating?: number;
 }
 export interface IRating {

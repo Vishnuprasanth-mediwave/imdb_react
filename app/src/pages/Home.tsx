@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import MovieCard from "../components/MovieCard";
 import { getMovies } from "../services/api";
-import { IMovie } from "../components/types";
+import { IMovieAllcards } from "../components/types";
 import PaginationComponent from "../components/pagination";
 
 const Home = () => {
-  const [movies, setMovies] = useState<IMovie[]>([]);
+  const [movies, setMovies] = useState<IMovieAllcards[]>([]);
   const [search, setSearch] = useState("");
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(0);
@@ -18,6 +18,7 @@ const Home = () => {
   async function getMoviesFromAPI() {
     try {
       const response = await getMovies(page, search, selectedOption);
+      console.log(response.data.movies);
       setMovies(response.data.movies);
       setCount(response.data.totalMovies);
     } catch (error) {
