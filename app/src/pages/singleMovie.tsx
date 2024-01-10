@@ -94,10 +94,13 @@ const SingleMovie = () => {
       <div className="single-card">
         <div className="big-card">
           <button onClick={handleDelete} className="delete">
-            ❌
+            Delete
           </button>
           <div className="image">
-            <img src={moviedata.image} alt={moviedata.movie_name} />
+            <img
+              src={`http://localhost:5001/uploads/${moviedata.image}`}
+              alt={moviedata.movie_name}
+            />
           </div>
           <div className="content">
             <div className="left">
